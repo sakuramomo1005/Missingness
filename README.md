@@ -48,12 +48,39 @@ int=ifelse(pi_mar>0.5,0,1) # missing idicator
 yy=ifelse(int==1,NA,y)
 ```
 #### Imputation methods
-The mice package is used for the fixed effects of cluster imputation adn imputation ignoring clusters
-
-The pan package is used for the mixed effects imputation. 
+* The mice package is used for the fixed effects of cluster imputation adn imputation ignoring clusters
+* The pan package is used for the mixed effects imputation. 
 
 ##### How the mice package work:
 
+* m  – Refers to 5 imputed data sets
+* maxit – Refers to no. of iterations taken to impute missing values
+* method – Refers to method used in imputation. we used predictive mean matching. We can use methods(mice) to check the possible mehtods
+
+```ruby
+#missing
+yy=ifelse(int==1,NA,y)
+
+install.packages('mice')
+library('mice')
+
+##imputation ignore cluster 
+data1=data.frame(y=c(yy),x=c(x))
+data1_imp=mice(data1,m=10,maxit=10,mehtod='pmm')
+
+##check imputed values
+data1_imp$imp$y
+
+##get complete data ( 2nd out of 10)
+completeData = complete(data1_imp,2)
+
+#build predictive model
+fit <- with(data = data1_imp, exp = lm(y~x)) 
+
+#combine results of all 5 models
+combine <- pool(fit)
+summary(combine)
+```
 
 It is weird that the pan package cannot work in my computer. I can install it successfully, but when I run it, it shuts down my R Studio.  
 
