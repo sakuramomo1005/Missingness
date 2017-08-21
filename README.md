@@ -13,14 +13,14 @@ puts markdown.to_html
 
 
 ## Andridge, 2011
-###Basic information
+### Basic information
 * Missing mechanism: MCAR, MAR
 * Software: R
 * Packages: mice, pan
 
 The author analyzed missingness by applying imputations, includes fixed cluster effect MI, ingoring clusters MI, random cluster effects MI (MMI).
 
-####Data generation:
+#### Data generation:
 ```ruby
 ##data generation
 k=20;m=50;tau=0.5;rou=0.01;sigma=10
