@@ -1,15 +1,6 @@
 # Missingness methods
-## Codes
-About what softwares did the authors use and how they work
 
-
-
-Missingness handling methods analysis
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+This session is about what softwares did the authors use and how they work
 
 
 ## Andridge, 2011
@@ -43,7 +34,24 @@ expit=function(x){
 }
 ```
 
-How the mice package work.
+#### Missingness generation:
+```ruby
+##MCAR
+a0=0.5
+pi_mcar=expit(a0) ## non missing proportion, the result is 0.622 
+##MAR
+a1=1
+pi_mar=expit(a0+a1*x)
+#if int=1 then missing
+int=ifelse(pi_mar>0.5,0,1) # missing idicator
+#missing results
+yy=ifelse(int==1,NA,y)
+```
+#### Imputation methods
+The mice package is used for the fixed effects of cluster imputation adn imputation ignoring clusters
+The pan package is used for the mixed effects imputation. 
+
+##### How the mice package work:
 
 
 It is weird that the pan package cannot work in my computer. I can install it successfully, but when I run it, it shuts down my R Studio.  
