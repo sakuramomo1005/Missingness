@@ -49,6 +49,7 @@ yy=ifelse(int==1,NA,y)
 ```
 #### Imputation methods
 The mice package is used for the fixed effects of cluster imputation adn imputation ignoring clusters
+
 The pan package is used for the mixed effects imputation. 
 
 ##### How the mice package work:
