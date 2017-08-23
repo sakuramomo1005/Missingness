@@ -53,9 +53,9 @@ Above all, R and SAS are mostly used software and the packages include SAS: MI, 
 #### * jomo
 jomo is a package for multilevel multiple imputation. Novel aspects of 'jomo' are the possibility of handling binary and categorical data through latent normal variables.
  ```ruby
- imp<-jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="fixed")
+ imp=jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="fixed")
  # or 
- imp<-jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="random")
+ imp=jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="random")
  ```
 * clus: A data frame, or matrix, containing the cluster indicator for each observation
 * nburn: Number of burn in iterations. Default is 1000.
@@ -67,7 +67,24 @@ If we have a data frame, dim=(m,n). After doing jomo, the dim will be (m*(nimp+1
 
 #### * pan
 It is weird that the pan package cannot work in my computer. I can install it successfully, but when I run it, it shuts down my R Studio.
-#### * MICE
+#### * mice
+mice is also a multiple imputation mehtods function. mice assumes that the missing data are Missing at Random (MAR)
+```ruby
+imp=mice(data,m=5,maxit=50,meth='pmm',seed=500)
+```
+* m=5: Number of imputed datasets. Five is the default value.
+* meth='pmm': The imputation method.
+...The default is pmm, which means Predictive Mean Matching. We can use 'methods(mice)' command to check what mehtods do it have. For example:
+...1. PMM (Predictive Mean Matching)  – For numeric variables
+...2. logreg(Logistic Regression) – For Binary Variables( with 2 levels)
+...3. polyreg(Bayesian polytomous regression) – For Factor Variables (>= 2 levels)
+...4. Proportional odds model (ordered, >= 2 levels)
+* maxit: Number of iterations taken to impute missing values
+ 
+The usual precess of using mice:
+1. First using mice to do multiple imputation to fill in the missing data
+2. Analyze each complete dataset separately based on the analysis model.
+3. Use command 'pool()' to pool all the the results together based on Rubin's rules. (mice package contains function pool())
 
 #### * lme4
 
@@ -145,7 +162,7 @@ yy=ifelse(int==1,NA,y)
 
 * m  – Refers to 5 imputed data sets
 * maxit – Refers to no. of iterations taken to impute missing values
-* method – Refers to method used in imputation. we used predictive mean matching. We can use methods(mice) to check the possible mehtods
+* method – Refers to method used in imputation. We used predictive mean matching. We can use 'methods(mice)' to check the possible mehtods
 
 ```ruby
 #missing
