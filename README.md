@@ -75,14 +75,10 @@ imp=mice(data,m=5,maxit=50,meth='pmm',seed=500)
 * m=5: Number of imputed datasets. Five is the default value.
 * meth='pmm': The imputation method.
 1. The default is pmm, which means Predictive Mean Matching. We can use 'methods(mice)' command to check what mehtods do it have. For example:
-⋅⋅1. PMM (Predictive Mean Matching)  – For numeric variables
-⋅⋅2. logreg(Logistic Regression) – For Binary Variables( with 2 levels)
-⋅⋅3. polyreg(Bayesian polytomous regression) – For Factor Variables (>= 2 levels)
-⋅⋅4. Proportional odds model (ordered, >= 2 levels)
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
+2. PMM (Predictive Mean Matching)  – For numeric variables
+3. logreg(Logistic Regression) – For Binary Variables( with 2 levels)
+4. polyreg(Bayesian polytomous regression) – For Factor Variables (>= 2 levels)
+5. Proportional odds model (ordered, >= 2 levels)
 * maxit: Number of iterations taken to impute missing values
  
 The usual precess of using mice:
