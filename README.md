@@ -110,16 +110,16 @@ MI is a multiple imputation procedure in SAS.
 Following statements are available for MI procedure:
 ```ruby
 PROC MI < options > ;
-BY variables ;
-CLASS variables ;
-EM < options > ;
-FCS < options > ;
-FREQ variable ;
-MCMC < options > ;
-MNAR options ;
-MONOTONE < options > ;
-TRANSFORM transform (variables< / options >) < . . . transform (variables< / options >) > ;
-VAR variables ;
+  BY variables ;
+  CLASS variables ;
+  EM < options > ;
+  FCS < options > ;
+  FREQ variable ;
+  MCMC < options > ;
+  MNAR options ;
+  MONOTONE < options > ;
+  TRANSFORM transform (variables< / options >) < . . . transform (variables< / options >) > ;
+  VAR variables ;
 ```
 * The EM statement uses the EM algorithm to compute the maximum likelihood estimate (MLE) of the data with missing values, assuming a multivariate normal distribution for the data
 * The MCMC statement uses a Markov chain Monte Carlo method to impute values for a data set with an arbitrary missing pattern, assuming a multivariate normal distribution for the data.
@@ -128,16 +128,36 @@ The MI procedure also has options as:
 * Data details:
   DATA= , OUT= ,
 * Imputation Details
-  NIMPUTE= specifies number of imputations
+  NIMPUTE= specifies number of imputations;
   SEED=specifies seed to begin random number generator
   
-
 #### * MIANALYZE
+The MIANALYZE procedure reads parameter estimates and associated standard errors or covariance matrix
+that are computed by the standard statistical procedure for each imputed data set. The MIANALYZE
+procedure then derives valid univariate inference for these parameters
+
+The following statements are available in the MIANALYZE procedure:
+```ruby
+PROC MIANALYZE < options > ;
+  BY variables ;
+  CLASS variables ;
+  MODELEFFECTS effects ;
+  < label: > TEST equation1 < , . . . , < equationk > > < / options > ;
+  STDERR variables ;
+ ```
+The required MODELEFFECTS statement lists the effects to be analyzed. The variables in the statement that
+are not specified in a CLASS statement are assumed to be continuous.
+
+The PROC MIANALYZE and MODELEFFECTS statements are required for the MIANALYZE procedure.
+The rest of this section provides detailed syntax information for each of these statements, beginning with the
+PROC MIANALYZE statement
 
 #### * GENMOD
-GEE
+The GENMOD procedure fits a generalized linear model to the data by maximum likelihood estimation of the parameter vector
+Usually used when GEE analysis 
 #### * NLMIXED
-RELR
+The NLMIXED procedure fits nonlinear mixed models. PROC NLMIXED fits nonlinear mixed models by maximizing an approximation to the likelihood integrated over the random effects. 
+Usually used when RELR analysis.
 
 ## More detailed examples
 * R, continuous: Andridge, 2011
