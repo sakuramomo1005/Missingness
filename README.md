@@ -1,5 +1,14 @@
 
-### Continuous
+# Missing Data Programming Methods
+
+This is a summary about the softwares and pacakges that were used in the 9 papers that handling missing data. The summary contains:
+* A summary table of the 9 papers' programming methods
+* A summary of how to use these packages
+* Some detailed examples
+
+## Summary Tabel
+The following is the table that compare the softwares and packages that were used in those 9 papers.
+### Continuous Outcomes
 
 | Author | Methods | Software |
 | --- | --- | --- |
@@ -15,7 +24,7 @@
 |	|	LMM	 |	R: lme4 |
 |	|	MI 	|	R: jomo |
 
-### Binary
+### Binary Outcomes
 
 | Author | Missing Handling Methods | Analysis Methods | Software |
 | --- | --- | --- | --- |
@@ -36,9 +45,11 @@
 | Hossain, 2016| MMI | GEE | R: jomo, geepack |
 | | MMI | RELR | R: jomo, lme4 |
 
+Above all, R and SAS are mostly used software and the packages include SAS: MI, MIANALYZE, GENMOD, NLMIXED; R: jomo, pan, lme4, MICE, geepack.
 
 ## How to use these packages?
-### R
+
+### In R
 #### jomo
 
 #### pan
