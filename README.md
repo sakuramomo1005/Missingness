@@ -87,6 +87,11 @@ The usual precess of using mice:
 3. Use command `pool()` to pool all the the results together based on Rubin's rules. (mice package contains function `pool()`)
 
 #### * lme4
+lme4 is a package for fitting linear and generalized linear mixed-effects models.For fitting a linear mixed-effects model (LMM) to data, via REML or maximum likelihood, we can usually use the command in lme4, `lmer()` 
+```ruby
+fit=lmer(formula, data)
+```
+* Formula:  Random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors
 
 ### SAS
 #### * MI
