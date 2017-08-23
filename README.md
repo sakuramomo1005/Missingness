@@ -93,7 +93,17 @@ fit=lmer(formula, data)
 ```
 * Formula:  Random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors
 
-### SAS
+### In SAS
+In SAS, when doing the mulitple imputation, there are usually three steps that using different process steps.
+* 1. Imputation: proc mi
+```ruby
+proc mi data=example out=outmi seed=1234; 
+var y x1 x2 x3;
+run;
+```
+* 2. Analysis: proc genmod/nlmxied (fix in some models)
+* 3. Pooling: proc mianalyze
+
 #### * MI
 
 #### * MIANALYZE
