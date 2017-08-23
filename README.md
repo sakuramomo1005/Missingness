@@ -1,20 +1,4 @@
-| Can Reorder | 2nd operation |2nd operation |2nd operation |
-| :---: | ---
-|1st operation|Normal Load <br/>Normal Store| Volatile Load <br/>MonitorEnter|Volatile Store<br/> MonitorExit|
-|Normal Load <br/> Normal Store| | | No|
-|Volatile Load <br/> MonitorEnter| No|No|No|
-|Volatile store <br/> MonitorExit| | No|No|
 
-
-<table>
-  <tr>
-    <td>One</td>
-    <td>Two</td>
-  </tr>
-  <tr>
-    <td colspan="2">Three</td>
-  </tr>
-</table>
 
 | One    | Two | Three | Four    | Five  | Six 
 | -
