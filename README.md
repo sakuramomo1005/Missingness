@@ -31,10 +31,31 @@
 | | | RELR | SAS: NLMIXED |
 | | Standard MI	| GEE/RE |SAS: MI, MIANALYZE, GENMOD, NLMIXED |
 | | Within cluster MI | GEE/RE| SAS: MI, MIANALYZE, GENMOD, NLMIXED |
+| Caille, 2014 | MI | Linear mixed effects regression model | R: pan |
+| | MI | RELR, ABB | SAS: GENMOD MI |
+| Hossain, 2016| MMI | GEE | R: jomo, geepack |
+| | MMI | RELR | R: jomo, lme4 |
+
 
 ## How to use these packages?
+### R
+#### jomo
 
+#### pan
 
+#### MICE
+
+#### lme4
+
+### SAS
+#### MI
+
+#### MIANALYZE
+
+#### GENMOD
+GEE
+#### NLMIXED
+RELR
 ## More detailed examples
 * R, continuous: Andridge, 2011
 * SAS, continuous: Taljaard, 2008
