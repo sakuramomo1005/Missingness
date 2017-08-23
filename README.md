@@ -46,15 +46,6 @@ The following is the table that compare the softwares and packages that were use
 | | MMI | RELR | R: jomo, lme4 |
 
 
-### Binary Outcomes
-| Author | Analysis Methods | Software |
-| --- | --- | --- | 
-| Ma, 2011-2013 | MI followed by GEE/RELR | SAS: MI, MIANALYZE, GENMOD, NLMIXED | 
-| Caille, 2014 | MI + Linear mixed effects regression model | R: pan |
-| | MI + RELR or ABB | SAS: GENMOD MI |
-| Hossain, 2016| MMI + GEE | R: jomo, geepack |
-| | MMI + RELR | R: jomo, lme4 |
-
 Above all, R and SAS are mostly used software and the packages include **SAS: MI, MIANALYZE, GENMOD, NLMIXED; R: jomo, pan, lme4, MICE, geepack.**
 
 ## How to use these packages?
