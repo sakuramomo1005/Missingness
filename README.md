@@ -20,11 +20,11 @@
 | Author | Missing Handling Methods | Analysis Methods | Software |
 | --- | --- | --- | --- |
 | Ma, 2011 | Complete case analysis |	GEE/RE |	SAS: GENMOD/NLMXED |
-| |	Within cluster Logistic regression |	GEE/RE |	SAS: |
+| |	Within cluster Logistic regression |	GEE/RE |	SAS: 
 MI
 MIANALYZE
 GENMOD
-NLMIXED"
+NLMIXED" |
 		Propensity score	GEE/RE	
 		MCMC	GEE/RE	
 	Across cluster 	Propensity score	GEE/RE	
