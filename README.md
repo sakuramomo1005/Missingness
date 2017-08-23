@@ -45,7 +45,7 @@ The following is the table that compare the softwares and packages that were use
 | Hossain, 2016| MMI | GEE | R: jomo, geepack |
 | | MMI | RELR | R: jomo, lme4 |
 
-Above all, R and SAS are mostly used software and the packages include SAS: MI, MIANALYZE, GENMOD, NLMIXED; R: jomo, pan, lme4, MICE, geepack.
+Above all, R and SAS are mostly used software and the packages include **SAS: MI, MIANALYZE, GENMOD, NLMIXED; R: jomo, pan, lme4, MICE, geepack.**
 
 ## How to use these packages?
 
