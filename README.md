@@ -1,4 +1,6 @@
-
+| Header ||
+|--------------|
+| 0 | 1 |
 
 | One    | Two | Three | Four    | Five  | Six 
 | -
