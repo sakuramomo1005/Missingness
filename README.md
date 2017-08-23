@@ -1,8 +1,13 @@
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| | Show file differences that haven't been staged |
-| git diff | Show file differences that haven't been staged |
+
+
+| Author | Methods | Software |
+| --- | --- | --- |
+| Taljaard, 2008 | Within cluster MI (ABB) | SAS: PROC MI |
+| | Pooled MI (ABB) | SAS: PROC MI |
+| | Standrad regression MI | SAS: PROC MI |
+| | Mixed-effects regression MI	|	R: pan |
+
+
 
 # Missingness methods
 
