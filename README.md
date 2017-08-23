@@ -131,6 +131,8 @@ The MI procedure also has options as:
   NIMPUTE= specifies number of imputations;
   SEED=specifies seed to begin random number generator
   
+  After using MI step, SAS will generate nimp full tables. 
+  
 #### * MIANALYZE
 The MIANALYZE procedure reads parameter estimates and associated standard errors or covariance matrix
 that are computed by the standard statistical procedure for each imputed data set. The MIANALYZE
@@ -244,6 +246,11 @@ summary(combine)
 ```
 
 ## Taljaard, 2008
+* Taljaard used SAS and t sample t test.
+* The used estimators are type 1 and type 2 error.
+* Taljaard only considered response Y, no covariates
+
+We can firstly generation the simulation data:
 
 ```ruby
 ***********generate the full data***;
@@ -273,7 +280,12 @@ do i= 1 to k;
 end;
 run;
 proc print data=type2_example;run;
+```
+And then generate missing values in the generated dataset.
 
+We can use the MCAR missingness mechanism as an example: Under MCAR, the missing probablility is 30%.
+
+```ruby
 ***********generate missing values***;
 data missing;
 set type2_example;
@@ -281,22 +293,34 @@ yy=y;
 if ind>0.7 then yy=.;
 run;
 proc print data=missing;run;
+```
+#### Analysis of the results
+1. We can firstly use complete case analysis to analyze the results. There is no covariates so we just do unajusted CCA.
 
-**complete case;
+```ruby
+**pull out complete case;
 data fulls;
-set missing;
-where yy^=.;
+  set missing;
+  where yy^=.;
 run;
 proc print data=fulls;run;
+  
+** Two sample t test;
+proc ttest data=fulls
+class x; *the idicator of intervention;
+  var yy; 
+run;
+```
 
+```ruby
 **mean imputaion;
 proc standard data=missing out=mean_imp replace; 
 run;
 proc print data=mean_imp;run;
 
-** MI 
+** MI;
 proc mi data=missing out=mid seed=123;
-var y yy;
+var yy;
 run;
 
 proc print data=mid;run;
