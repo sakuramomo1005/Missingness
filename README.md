@@ -1,4 +1,5 @@
 
+### Continuous
 
 | Author | Methods | Software |
 | --- | --- | --- |
@@ -6,6 +7,50 @@
 | | Pooled MI (ABB) | SAS: PROC MI |
 | | Standrad regression MI | SAS: PROC MI |
 | | Mixed-effects regression MI	|	R: pan |
+| Andridge, 2010 | Ignoring clusters | R: MICE |
+|	|	Fixed cluster effects	|	R: MICE |
+|	|	Random cluster effects	|	R: pan |
+|Hossain, 2016 |	Cluster level analysis (Unadjusted)	| |
+| |Cluster level analysis (Adjusted)	| |
+|	|	LMM	 |	R: lme4 |
+|	|	MI 	|	R: jomo |
+
+### Binary
+
+| Author | Missing Handling Methods | Analysis Methods | Software |
+| --- | --- | --- | --- |
+| Ma, 2011 | Complete case analysis |	GEE/RE |	SAS: GENMOD/NLMXED |
+| |	Within cluster Logistic regression |	GEE/RE |	SAS: |
+MI
+MIANALYZE
+GENMOD
+NLMIXED"
+		Propensity score	GEE/RE	
+		MCMC	GEE/RE	
+	Across cluster 	Propensity score	GEE/RE	
+		Random effect logistic regression	GEE/RE	
+		Fixed effect logistic rgerssion	GEE/RE	
+	"Ignore cluster MI
+Standard MI "	Logistic regression	GEE/RE	
+		Propensity score	GEE/RE	
+		MCMC	GEE/RE	
+
+
+Ma, 2012	Complete case analysis 			SAS: GENMOD
+	Standard MI  		Logistic regression	"SAS: 
+MI
+MIANALYZE
+GENMOD
+NLMIXED"
+			MCMC	
+	Within cluster MI		Logistic regression	
+			MCMC	
+	Fixed effect MI		Logistic regression	
+	Complete case analysis 		GEE	SAS: GENMOD
+Ma, 2013			RELR	SAS: NLMIXED
+	Standard MI		GEE/RE	SAS: MI, MIANALYZE, GENMOD, NLMIXED
+	Within cluster MI		GEE/RE	
+
 
 
 
