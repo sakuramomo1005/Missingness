@@ -199,8 +199,9 @@ run;
 * REPEATED statement: invokes the GEE method, specifies the correlation structure, and controls the displayed output from the GEE model. 
 * subject = : must in the coass statement. The option SUBJECT=CASE specifies that individual subjects be identified in the input data set by the variable case. 
 * The esitmates and GEE Model Information and Covariance Matrix will be in the output.
+* corrw: This asks to see the working correlation matrix.
 
-In Ma's paper and Hossain's paper, we need to estimate log-odds of parameters.
+In Ma's paper and Hossain's paper, we need to estimate **log-odds** of parameters.
 
 However, unlike PROC LOGISTIC, PROC GENMOD does not provide odds ratio estimates for logistic models by default. When fitting a model in PROC GENMOD, odds ratios are only possible when the response is binary or multinomial (DIST=BIN or DIST=MULT) and the link involves a logit function (LINK=LOGIT or LINK=CUMLOGIT).
 
@@ -222,6 +223,33 @@ proc genmod data=six descending;
 #### * NLMIXED
 The NLMIXED procedure fits nonlinear mixed models. PROC NLMIXED fits nonlinear mixed models by maximizing an approximation to the likelihood integrated over the random effects. 
 Usually used when RELR analysis.
+
+**NLMIXED compared to MIXED**
+* The proc nlmixed can fit to nonlinear model while proc mixed only works on linear model
+* The proc mixed can perform both maximum likelihood and restricted maximum likelihood (REML) estimation, while proc nlmixed can only perform maximum likelihood. 
+* The proc mixed need assumption of normally distribution, while proc nlmixed can analyze normal, binomial, poisson and so on. 
+
+An example: 
+```ruby
+proc nlmixed data=infection;
+         parms beta0=-1 beta1=1 s2u=2;
+         eta = beta0 + beta1*t + u;
+         expeta = exp(eta);
+         p = expeta/(1+expeta);
+         model x ~ binomial(n,p);
+         random u ~ normal(0,s2u) subject=clinic;
+         predict eta out=eta;
+         estimate ’1/beta1’ 1/beta1;
+         run;
+```
+* PARMS statement defines the parameters and their starting values. (I think this process is confusing) 
+* The next three statements define pij 
+* MODEL statement defines the conditional distribution of xij to be binomial.
+* The RANDOM statement defines u to be the random effect with subjects defined by the clinic variable.
+* The PREDICT statement constructs predictions for each observation in the input data set.
+* The ESTIMATE statement requests an estimate of the reciprocal of beta1.
+
+Here in Ma's and Hossain's paper, to estimate log odds, we can just add an estimate statement: `estiamte 'log odds' log(beta1)`
 
 ## More detailed examples
 * R, continuous: Andridge, 2011
