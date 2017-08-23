@@ -32,8 +32,10 @@
 | | Standard MI	| GEE/RE |SAS: MI, MIANALYZE, GENMOD, NLMIXED |
 | | Within cluster MI | GEE/RE| SAS: MI, MIANALYZE, GENMOD, NLMIXED |
 
+## How to use these packages?
 
-## Examples
+
+## More detailed examples
 * R, continuous: Andridge, 2011
 * SAS, continuous: Taljaard, 2008
 * R, binary: Hossain, 2016
