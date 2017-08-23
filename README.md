@@ -335,10 +335,13 @@ run;
 proc print data=mid;run;
 *proc print data=missing;run;
 
-proc ttest data=mid
+proc ttest data=mid;
 class x; *the idicator of intervention;
   var yy; 
 run;
 ```
+#### Questions
+1. The author only mentioned `proc mi` in the multiple imputation. She did not mention how to combine the MI results. I don't know what she did after generation multiple full data sets. Only applied two sample t test on the multiple data sets?
+
 
 The problem here is that only based on these packages, we may cannot calculate the effects that are in the papers, just like estimate SE, coverage percentage. 
