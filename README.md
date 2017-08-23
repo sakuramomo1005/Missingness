@@ -50,23 +50,37 @@ Above all, R and SAS are mostly used software and the packages include SAS: MI, 
 ## How to use these packages?
 
 ### In R
-#### jomo
+#### * jomo
+jomo is a package for multilevel multiple imputation. Novel aspects of 'jomo' are the possibility of handling binary and categorical data through latent normal variables.
+ ```ruby
+ imp<-jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="fixed")
+ # or 
+ imp<-jomo(Y,clus=clus,nburn=nburn,nbetween=nbetween,nimp=nimp, meth="random")
+ ```
+* clus: A data frame, or matrix, containing the cluster indicator for each observation
+* nburn: Number of burn in iterations. Default is 1000.
+* nbetween: Number of iterations between two successive imputations. Default is 1000.
+* nimp: Number of Imputations. Default is 5.
+* Attention: If Y is binary data, then Y must be factors
 
-#### pan
+If we have a data frame, dim=(m,n). After doing jomo, the dim will be (m*(nimp+1),n). We can do analysis based on each m * n data frame and then pool them together. jomo package does not have a pooling function. 
 
-#### MICE
+#### * pan
+It is weird that the pan package cannot work in my computer. I can install it successfully, but when I run it, it shuts down my R Studio.
+#### * MICE
 
-#### lme4
+#### * lme4
 
 ### SAS
-#### MI
+#### * MI
 
-#### MIANALYZE
+#### * MIANALYZE
 
-#### GENMOD
+#### * GENMOD
 GEE
-#### NLMIXED
+#### * NLMIXED
 RELR
+
 ## More detailed examples
 * R, continuous: Andridge, 2011
 * SAS, continuous: Taljaard, 2008
