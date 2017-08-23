@@ -311,20 +311,34 @@ class x; *the idicator of intervention;
   var yy; 
 run;
 ```
-
+2. The author also used mean imputation. There is a proc step called `proc standard`, which can help do the mean imputation
 ```ruby
 **mean imputaion;
 proc standard data=missing out=mean_imp replace; 
 run;
 proc print data=mean_imp;run;
 
+** Two sample t test;
+proc ttest data=mean_imp
+class x; *the idicator of intervention;
+  var yy; 
+run;
+```
+3. Multiple imputation.
+
+```ruby
 ** MI;
 proc mi data=missing out=mid seed=123;
 var yy;
 run;
 
 proc print data=mid;run;
-proc print data=missing;run;
+*proc print data=missing;run;
+
+proc ttest data=mid
+class x; *the idicator of intervention;
+  var yy; 
+run;
 ```
 
 The problem here is that only based on these packages, we may cannot calculate the effects that are in the papers, just like estimate SE, coverage percentage. 
