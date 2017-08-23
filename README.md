@@ -45,9 +45,11 @@ The following is the table that compare the softwares and packages that were use
 | Hossain, 2016| MMI | GEE | R: jomo, geepack |
 | | MMI | RELR | R: jomo, lme4 |
 
+
+### Binary Outcomes
 | Author | Analysis Methods | Software |
 | --- | --- | --- | 
-| Ma | MI followed by GEE/RELR | SAS: MI, MIANALYZE, GENMOD, NLMIXED | 
+| Ma, 2011-2013 | MI followed by GEE/RELR | SAS: MI, MIANALYZE, GENMOD, NLMIXED | 
 | Caille, 2014 | MI + Linear mixed effects regression model | R: pan |
 | | MI + RELR or ABB | SAS: GENMOD MI |
 | Hossain, 2016| MMI + GEE | R: jomo, geepack |
