@@ -156,7 +156,69 @@ PROC MIANALYZE statement
 
 #### * GENMOD
 The GENMOD procedure fits a generalized linear model to the data by maximum likelihood estimation of the parameter vector
-Usually used when GEE analysis 
+Usually used when GEE analysis .
+
+SAS support gives us a good example:
+```ruby
+***Generate the data;
+data six;
+   input case city$ @@;
+   do i=1 to 4;
+      input age smoke wheeze @@;
+      output;
+   end;
+   datalines;
+1 portage   9 0 1  10 0 1  11 0 1  12 0 0
+2 kingston  9 1 1  10 2 1  11 2 0  12 2 0
+3 kingston  9 0 1  10 0 0  11 1 0  12 1 0
+4 portage   9 0 0  10 0 1  11 0 1  12 1 0
+5 kingston  9 0 0  10 1 0  11 1 0  12 1 0
+6 portage   9 0 0  10 1 0  11 1 0  12 1 0
+7 kingston  9 1 0  10 1 0  11 0 0  12 0 0
+8 portage   9 1 0  10 1 0  11 1 0  12 2 0
+9 portage   9 2 1  10 2 0  11 1 0  12 1 0
+10 kingston  9 0 0  10 0 0  11 0 0  12 1 0
+11 kingston  9 1 1  10 0 0  11 0 1  12 0 1
+12 portage   9 1 0  10 0 0  11 0 0  12 0 0
+13 kingston  9 1 0  10 0 1  11 1 1  12 1 1
+14 portage   9 1 0  10 2 0  11 1 0  12 2 1
+15 kingston  9 1 0  10 1 0  11 1 0  12 2 1
+16 portage   9 1 1  10 1 1  11 2 0  12 1 0
+;
+run;
+****Analyze the data by genmod;
+proc genmod data=six ;
+   class case city ;
+   model  wheeze = city age smoke  /  dist=bin;
+   repeated  subject=case / type=exch covb corrw;
+run;
+```
+
+* CLASS statement: point out the ordinary variables
+* MODEL statement: refers the fited logistice model. Here it is a logistic regression model with response variable wheeze and independent variables city, age and smoke.
+* REPEATED statement: invokes the GEE method, specifies the correlation structure, and controls the displayed output from the GEE model. 
+* subject = : must in the coass statement. The option SUBJECT=CASE specifies that individual subjects be identified in the input data set by the variable case. 
+* The esitmates and GEE Model Information and Covariance Matrix will be in the output.
+
+In Ma's paper and Hossain's paper, we need to estimate log-odds of parameters.
+
+However, unlike PROC LOGISTIC, PROC GENMOD does not provide odds ratio estimates for logistic models by default. When fitting a model in PROC GENMOD, odds ratios are only possible when the response is binary or multinomial (DIST=BIN or DIST=MULT) and the link involves a logit function (LINK=LOGIT or LINK=CUMLOGIT).
+
+* `EXP option` can be used in an appropriate ESTIMATE statement to obtain an odds ratio estimate and confidence interval. 
+
+For example:
+```ruby
+proc genmod data=six descending;
+         class case city;
+         model wheeze = city age smoke / dist=bin;
+         repeated subject=case / type=exch;
+         estimate "log O.R. Age" age 1 / exp;
+         estimate "log O.R. Kingston vs Portage" city 1 -1 / exp;
+         lsmeans city / ilink exp diff cl;
+         lsmestimate city 'Kingston vs Portage' 1 -1 / exp cl;
+         run;
+```
+
 #### * NLMIXED
 The NLMIXED procedure fits nonlinear mixed models. PROC NLMIXED fits nonlinear mixed models by maximizing an approximation to the likelihood integrated over the random effects. 
 Usually used when RELR analysis.
