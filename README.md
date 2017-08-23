@@ -162,8 +162,6 @@ Usually used when RELR analysis.
 ## More detailed examples
 * R, continuous: Andridge, 2011
 * SAS, continuous: Taljaard, 2008
-* R, binary: Hossain, 2016
-* SAS, binary: Ma, 2012
 
 
 ## Andridge, 2011
@@ -245,6 +243,64 @@ combine <- pool(fit)
 summary(combine)
 ```
 
-It is weird that the pan package cannot work in my computer. I can install it successfully, but when I run it, it shuts down my R Studio.  
+## Taljaard, 2008
 
+```ruby
+***********generate the full data***;
+data type2_example;
+k=6; m=30; rou=0.1; sigma=15; mu=75; delta=-0.2*sigma;
+std_u=sqrt(rou*sigma**2);
+std_e=sqrt(sigma**2-rou*sigma**2);
+do i= 1 to k;
+   x=1;
+   u=rand('normal',0,std_u);
+   do j=1 to m;
+    e=rand('normal',0,std_e);
+	y=mu+u+e+delta;
+	ind=rand('uniform');
+	output;
+	end; 
+end;
+do i= 1 to k;
+   x=0;
+   u=rand('normal',0,std_u);
+   do j=1 to m;
+    e=rand('normal',0,std_e);
+	y=mu+u+e;
+	ind=rand('uniform');
+	output;
+	end; 
+end;
+run;
+proc print data=type2_example;run;
 
+***********generate missing values***;
+data missing;
+set type2_example;
+yy=y;
+if ind>0.7 then yy=.;
+run;
+proc print data=missing;run;
+
+**complete case;
+data fulls;
+set missing;
+where yy^=.;
+run;
+proc print data=fulls;run;
+
+**mean imputaion;
+proc standard data=missing out=mean_imp replace; 
+run;
+proc print data=mean_imp;run;
+
+** MI 
+proc mi data=missing out=mid seed=123;
+var y yy;
+run;
+
+proc print data=mid;run;
+proc print data=missing;run;
+```
+
+The problem here is that only based on these packages, we may cannot calculate the effects that are in the papers, just like estimate SE, coverage percentage. 
