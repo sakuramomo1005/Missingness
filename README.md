@@ -33,6 +33,11 @@
 | | Within cluster MI | GEE/RE| SAS: MI, MIANALYZE, GENMOD, NLMIXED |
 
 
+## Examples
+* R, continuous: Andridge, 2011
+* SAS, continuous: Taljaard, 2008
+* R, binary: Hossain, 2016
+* SAS, binary: Ma, 2012
 
 
 # Missingness methods
