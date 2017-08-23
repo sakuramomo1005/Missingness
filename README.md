@@ -14,7 +14,7 @@ The following is the table that compare the softwares and packages that were use
 | --- | --- | --- |
 | Taljaard, 2008 | Within cluster MI (ABB) | SAS: PROC MI |
 | | Pooled MI (ABB) | SAS: PROC MI |
-| | Standrad regression MI | SAS: PROC MaI |
+| | Standrad regression MI | SAS: PROC MI |
 | | Mixed-effects regression MI	|	R: pan |
 | Andridge, 2010 | Ignoring clusters | R: MICE |
 |	|	Fixed cluster effects	|	R: MICE |
