@@ -105,6 +105,32 @@ run;
 * 3. Pooling: proc mianalyze
 
 #### * MI
+MI is a multiple imputation procedure in SAS.
+
+Following statements are available for MI procedure:
+```ruby
+PROC MI < options > ;
+BY variables ;
+CLASS variables ;
+EM < options > ;
+FCS < options > ;
+FREQ variable ;
+MCMC < options > ;
+MNAR options ;
+MONOTONE < options > ;
+TRANSFORM transform (variables< / options >) < . . . transform (variables< / options >) > ;
+VAR variables ;
+```
+* The EM statement uses the EM algorithm to compute the maximum likelihood estimate (MLE) of the data with missing values, assuming a multivariate normal distribution for the data
+* The MCMC statement uses a Markov chain Monte Carlo method to impute values for a data set with an arbitrary missing pattern, assuming a multivariate normal distribution for the data.
+
+The MI procedure also has options as:
+* Data details:
+  DATA= , OUT= ,
+* Imputation Details
+  NIMPUTE= specifies number of imputations
+  SEED=specifies seed to begin random number generator
+  
 
 #### * MIANALYZE
 
@@ -118,11 +144,6 @@ RELR
 * SAS, continuous: Taljaard, 2008
 * R, binary: Hossain, 2016
 * SAS, binary: Ma, 2012
-
-
-# Missingness methods
-
-This session is about what softwares did the authors use and how they work
 
 
 ## Andridge, 2011
